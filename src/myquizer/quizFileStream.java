@@ -22,11 +22,11 @@ import java.util.NoSuchElementException;
  */
 public class quizFileStream {
 
-    public void writeToFile(List<Quiz> list, String file) {
+    public void writeToFile(List<Quiz> list, String file,int newFile) {
         ObjectOutputStream outStream = null;
         try {
             File myFile = new File(file);
-            if(myFile.exists()){
+            if(myFile.exists() && newFile==0){
                 outStream = new ObjectOutputStream(new FileOutputStream(file, true)) {
                     protected void writeStreamHeader() throws IOException {
                         reset();

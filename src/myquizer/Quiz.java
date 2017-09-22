@@ -48,6 +48,10 @@ public class Quiz implements Serializable {
        return questions;
    }
    
+   public void setQuestList(List<Question> updList ){
+       this.questions=updList;
+   }
+   
    
 
 }
