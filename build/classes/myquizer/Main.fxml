@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myquizer.MainController">
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="myquizer.InstructorMainController">
    <children>
       <Pane fx:id="editOrMakePane" prefHeight="608.0" prefWidth="607.0">
          <children>
@@ -36,7 +36,7 @@
                   <Font size="21.0" />
                </font>
             </Button>
-            <Button fx:id="btnEditQuiz" layoutX="179.0" layoutY="222.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="246.0" text="Go">
+            <Button fx:id="btnEditQuiz" layoutX="179.0" layoutY="222.0" mnemonicParsing="false" onAction="#startEditingQuiz" prefHeight="47.0" prefWidth="246.0" text="Go">
                <font>
                   <Font size="21.0" />
                </font>
@@ -157,6 +157,75 @@
             <Label fx:id="lblErrorDone" layoutX="110.0" layoutY="174.0" prefHeight="17.0" prefWidth="390.0" textFill="RED" />
             <TextField fx:id="txtMarks" layoutX="343.0" layoutY="49.0" prefHeight="32.0" prefWidth="75.0" />
             <Label fx:id="lblErrorDone1" layoutX="343.0" layoutY="24.0" prefHeight="17.0" prefWidth="75.0" text="Marks :" textFill="RED" />
+         </children>
+      </Pane>
+      <Pane fx:id="editQuizPane" prefHeight="600.0" prefWidth="600.0" visible="false">
+         <children>
+            <Label fx:id="lblQuesNum" layoutX="54.0" layoutY="40.0" prefHeight="40.0" prefWidth="192.0" text="Question">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="txtQues1" editable="false" layoutX="48.0" layoutY="91.0" prefHeight="106.0" prefWidth="504.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Button fx:id="btnNext" layoutX="459.0" layoutY="507.0" mnemonicParsing="false" onAction="#gotoNextQues" prefHeight="40.0" prefWidth="82.0" text="Next">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Label fx:id="lblMarks" layoutX="363.0" layoutY="40.0" prefHeight="40.0" prefWidth="192.0" text="Max Marks () ">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Pane fx:id="insMCQPane" layoutX="48.0" layoutY="220.0" prefHeight="258.0" prefWidth="504.0" visible="false">
+               <children>
+                  <RadioButton fx:id="radMCQa1" disable="true" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="449.0">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="mcqGrp" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="radMCQb1" disable="true" layoutX="30.0" layoutY="68.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="449.0" toggleGroup="$mcqGrp" />
+                  <RadioButton fx:id="radMCQc1" disable="true" layoutX="30.0" layoutY="118.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="449.0" toggleGroup="$mcqGrp" />
+                  <RadioButton fx:id="radMCQd1" disable="true" layoutX="30.0" layoutY="176.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="449.0" toggleGroup="$mcqGrp" />
+               </children>
+            </Pane>
+            <Pane fx:id="insTrueFalsePane" layoutX="58.0" layoutY="230.0" prefHeight="258.0" prefWidth="504.0" visible="false">
+               <children>
+                  <RadioButton fx:id="radTrue1" disable="true" layoutX="30.0" layoutY="14.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="123.0" text="True">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="truefalseGrp" />
+                     </toggleGroup>
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="radFalse1" disable="true" layoutX="30.0" layoutY="86.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="82.0" text="False" toggleGroup="$truefalseGrp">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Pane>
+            <Pane fx:id="insNumericPane" layoutX="48.0" layoutY="220.0" prefHeight="258.0" prefWidth="504.0" visible="false">
+               <children>
+                  <TextArea fx:id="txtAns" editable="false" prefHeight="106.0" prefWidth="504.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextArea>
+               </children>
+            </Pane>
+            <TextField fx:id="txtchngIndex" layoutX="83.0" layoutY="507.0" prefHeight="40.0" prefWidth="75.0" />
+            <Label layoutX="76.0" layoutY="480.0" text="Enter new Index for this Question" />
+            <Button layoutX="170.0" layoutY="507.0" mnemonicParsing="false" onAction="#chngQuesIndex" prefHeight="40.0" prefWidth="82.0" text="Enter">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>
