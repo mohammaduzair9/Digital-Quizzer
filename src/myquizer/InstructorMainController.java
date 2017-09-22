@@ -143,7 +143,7 @@ public class InstructorMainController implements Initializable {
     
     int QuesNum;
     int index=1;
-    List<Question> quesList=new CopyOnWriteArrayList<>();
+    List<Question> quesList=new ArrayList<>();
     Question old;
     Iterator<Question> iter;
     Question currQues;
@@ -173,21 +173,30 @@ public class InstructorMainController implements Initializable {
         
     }
     
-    public void startMakingQuiz(ActionEvent event) throws IOException{    
-        if(quizTitle.getText().isEmpty() || quizDesc.getText().isEmpty()){
-            lblErrorMake.setText("You must give a title and description for quiz");
-        }
-        else{
-            
-            myQuiz.setTitle(quizTitle.getText());
-            myQuiz.setDesc(quizDesc.getText());
-            
+    public void startMakingQuiz(ActionEvent event) throws IOException{
+        String qTitle = quizTitle.getText();
+        String qDesc = quizDesc.getText();
+        boolean startquiz=startMakingQuizAfter(qTitle, qDesc);
+        if(startquiz){
             subQuesPane.setVisible(true);
             makeQuizPane.setVisible(false);
-            
+        }
+        else{
+            lblErrorMake.setText("You must give a title and description for quiz");
         }
     }
-    public void startEditingQuiz(ActionEvent event) throws IOException{    
+    
+    public boolean startMakingQuizAfter(String qTitle, String qDesc){    
+        if(qTitle.equals("") || qDesc.equals("")){
+            return false;
+        }
+        else{
+            myQuiz.setTitle(qTitle);
+            myQuiz.setDesc(qDesc);
+            return true;
+        }
+    }
+    public boolean startEditingQuiz(ActionEvent event) throws IOException{    
             
         String quizTitle = (String) cboEdit.getSelectionModel().getSelectedItem();
         for (Quiz quiz : quizList) {
@@ -205,10 +214,11 @@ public class InstructorMainController implements Initializable {
             
             currQues=iter.next();
             dispNextQues(currQues);
-            
+            return true;
         }
         else{
             System.out.println("NO QUESTIONS");
+            return false;
         }
         
     }
@@ -281,17 +291,14 @@ public class InstructorMainController implements Initializable {
         txtQues1.setText(ques.getQuest());
         lblMarks.setText("Max Marks ( " + ques.getMaxMarks() + " )" );
         displayOptions(ques);
- 
-    } 
+        
+    }
     
     public void makeQuiz(ActionEvent event) throws IOException{    
-        if(false){
-            lblErrorDone.setText("Enter atleast one question for quiz");
-        }
-        else{
-            quizList.add(myQuiz);
+        boolean mQuiz=makeQuizAfter();
+        if(mQuiz){
             quizFileStream qf = new quizFileStream();
-            qf.writeToFile(quizList, filePath,0);
+            qf.writeToFile(quizList, filePath,1);
             
             Stage stage = (Stage) txtAns.getScene().getWindow();
             stage.close();
@@ -301,6 +308,20 @@ public class InstructorMainController implements Initializable {
             Stage primaryStage=new Stage();
             primaryStage.setScene(scene);
             primaryStage.show();
+        }
+        else{
+            lblErrorDone.setText("Enter atleast one question for quiz");
+        }
+    }
+        
+    
+    public boolean makeQuizAfter(){    
+        if(myQuiz.getQuestList().isEmpty()){
+            return false;
+        }
+        else{
+            quizList.add(myQuiz);
+            return true;
             
         }
     }
@@ -356,10 +377,15 @@ public class InstructorMainController implements Initializable {
     }
     
     public void subMCQ(ActionEvent event) throws IOException{    
-        if(txtMarks.getText().isEmpty() || txtQuesMCQ.getText().isEmpty() || txtMCQa.getText().isEmpty() || txtMCQb.getText().isEmpty() || txtMCQc.getText().isEmpty() || txtMCQd.getText().isEmpty()){
-            lblErrorMCQ.setText("You must enter a question and all mcq options with the max marks.");
-        }
-        else{
+        String quesMarks=txtMarks.getText();
+        String quesStr=txtQuesMCQ.getText();
+        String mcqA=txtMCQa.getText();
+        String mcqB=txtMCQb.getText();
+        String mcqC=txtMCQc.getText();
+        String mcqD=txtMCQd.getText();
+        
+        boolean sMCQ = subMCQAfter(quesMarks,quesStr,mcqA,mcqB,mcqC,mcqD);
+        if(sMCQ){
             mcqQuest myQues = new mcqQuest();
             myQues.setQuest(txtQuesMCQ.getText());
             myQues.setOptions(txtMCQa.getText(),txtMCQb.getText(),txtMCQc.getText(),txtMCQd.getText());
@@ -387,8 +413,23 @@ public class InstructorMainController implements Initializable {
             txtMCQd.setText("");
             txtMarks.setText("");
             
+            
             myQuiz.addQues(myQues);
             
+        }
+        else{
+            
+            lblErrorMCQ.setText("You must enter a question and all mcq options with the max marks.");
+        }
+           
+    }
+    
+    public boolean subMCQAfter(String qMarks,String qQues, String qMCQa, String qMCQb, String qMCQc, String qMCQd) {    
+        if(qMarks.equals("") || qQues.equals("") || qMCQa.equals("") || qMCQb.equals("") || qMCQc.equals("") || qMCQd.equals("")){
+            return false;
+        }
+        else{
+            return true;
         }
     }
     
@@ -440,8 +481,14 @@ public class InstructorMainController implements Initializable {
     
     public void chngQuesIndex(ActionEvent event) throws Exception{
         int newIndex = Integer.parseInt(txtchngIndex.getText());
-        old = quesList.get(newIndex);
-        quesList.set(newIndex, currQues);
-        quesList.set(index, old);
+        chngQuesIndexAfter(newIndex,currQues);
+    }
+    
+    public List<Question> chngQuesIndexAfter(int newInd,Question currQues){
+        old = quesList.get(--newInd);
+        System.out.println(quesList);
+        Collections.swap(quesList, newInd, index);
+        System.out.println(quesList);
+        return quesList;
     }
 }

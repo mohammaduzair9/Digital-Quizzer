@@ -109,22 +109,16 @@ public class MainController  {
     String filePath = "Quizes.ser";
     String role="Instructor";
     
-    user user1 = new user();
-    user user2 = new user();
+    user user1 = user1=new user("uzair","1234","Student",0);
+    user user2=new user("fahad","1234","Instructor",0);
+    
     user User = new user();
     
     public void Login(ActionEvent event) throws Exception{
-        user1=new user("uzair","1234","Student",0);
-        user2=new user("fahad","1234","Instructor",0);
+        String username=txtUser.getText();
+        String userpass=txtPass.getText();
+        User=tryLogin(username,userpass);
         
-        if(txtUser.getText().equals(user1.getUserName()) && txtPass.getText().equals(user1.getPassword())){
-            User=user1;
-        }
-        else if(txtUser.getText().equals(user2.getUserName()) && txtPass.getText().equals(user2.getPassword())){
-            User=user2;
-        }
-        
-        System.out.println(User);
         if(User==user1 || User==user2){
             lblStatus.setText("Login Successful");
             
@@ -149,6 +143,19 @@ public class MainController  {
         }
         else{
             lblStatus.setText("Login Failed");
+        }
+    }
+    
+    public user tryLogin(String username,String password){
+        
+        if(username.equals(user1.getUserName()) && password.equals(user1.getPassword())){
+            return user1;
+        }
+        else if(username.equals(user2.getUserName()) && password.equals(user2.getPassword())){
+            return user2;
+        }
+        else{
+            return null;
         }
     }
     
