@@ -31,21 +31,6 @@ public class InstructorMainControllerTest {
          
     }
     
-    @BeforeClass
-    public static void setUpClass() throws InterruptedException {
-        // Initialise Java FX
-        System.out.printf("About to launch FX App\n");
-        Thread t = new Thread("JavaFX Init Thread") {
-        public void run() {
-            Application.launch(Application.class, new String[0]);
-        }
-    };
-        t.setDaemon(true);
-        t.start();
-        System.out.printf("FX App thread started\n");
-        Thread.sleep(500);
-}
-    
     @Test
     public void testStartMakingQuiz(){
         System.out.println("startMakingQuiz");
@@ -106,7 +91,7 @@ public class InstructorMainControllerTest {
         Question currQues =q2;
         int newIndex=2;
         
-        Question result = instance.chngQuesIndexAfter(newIndex,currQues).get(2);
+        Question result = instance.chngQuesIndexAfter(newIndex,currQues).get(1);
         Question expectedResult = q2;
         assertEquals(expectedResult, result);
     }

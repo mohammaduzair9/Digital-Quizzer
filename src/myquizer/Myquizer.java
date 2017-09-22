@@ -25,7 +25,7 @@ public class Myquizer extends Application {
     public void start(Stage primaryStage) {
         try{
             Parent root = FXMLLoader.load(getClass().getResource("/myquizer/Login.fxml"));
-            Scene scene = new Scene(root,500,300);
+            Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
             
