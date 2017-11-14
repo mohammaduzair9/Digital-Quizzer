@@ -1,5 +1,9 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.controller;
 
+import com.QuizGenerator.model.Quiz;
+import com.QuizGenerator.model.Question;
+import com.QuizGenerator.model.truefalseQuest;
+import com.QuizGenerator.model.mcqQuest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;

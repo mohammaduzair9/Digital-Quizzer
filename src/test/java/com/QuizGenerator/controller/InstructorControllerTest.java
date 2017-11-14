@@ -1,9 +1,9 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.controller;
 
-import com.mycompany.quizgenerator.InstructorController;
-import com.mycompany.quizgenerator.LoginController;
-import com.mycompany.quizgenerator.Quiz;
-import com.mycompany.quizgenerator.Question;
+import com.QuizGenerator.controller.InstructorController;
+import com.QuizGenerator.controller.LoginController;
+import com.QuizGenerator.model.Quiz;
+import com.QuizGenerator.model.Question;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;

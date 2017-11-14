@@ -1,5 +1,7 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.controller;
 
+import com.QuizGenerator.model.User;
+import com.QuizGenerator.model.Quiz;
 import java.util.ArrayList;
 import java.util.List;
 import javafx.event.ActionEvent;

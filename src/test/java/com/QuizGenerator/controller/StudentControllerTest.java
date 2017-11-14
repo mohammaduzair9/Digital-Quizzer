@@ -1,5 +1,7 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.controller;
 
+import com.QuizGenerator.controller.LoginController;
+import com.QuizGenerator.model.User;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

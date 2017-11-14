@@ -1,10 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.controller;
 
+import com.QuizGenerator.model.User;
+import com.QuizGenerator.model.Quiz;
+import com.QuizGenerator.model.Question;
+import com.QuizGenerator.model.truefalseQuest;
+import com.QuizGenerator.model.mcqQuest;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,10 +27,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author UZAIR
- */
 public class InstructorController implements Initializable {
     @FXML    private Label lblStatus;
     @FXML    private Label lblQuesNum;

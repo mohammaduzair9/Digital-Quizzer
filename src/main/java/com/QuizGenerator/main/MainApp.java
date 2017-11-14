@@ -1,4 +1,6 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.main;
+
+
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;

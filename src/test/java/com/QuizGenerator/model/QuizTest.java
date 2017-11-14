@@ -1,5 +1,7 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.model;
 
+import com.QuizGenerator.model.Quiz;
+import com.QuizGenerator.model.Question;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;

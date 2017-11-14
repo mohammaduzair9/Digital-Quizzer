@@ -1,4 +1,4 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

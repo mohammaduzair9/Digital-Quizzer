@@ -1,5 +1,6 @@
-package com.mycompany.quizgenerator;
+package com.QuizGenerator.controller;
 
+import com.QuizGenerator.model.Quiz;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
