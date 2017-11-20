@@ -1,16 +1,16 @@
 package com.QuizGenerator.main;
 
-
-
-import javafx.application.Application;
 import static javafx.application.Application.launch;
+import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+//Client App Starts from here
 public class MainApp extends Application {
 
+    //Loading the login screen
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));

@@ -27,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+//Controller Class for Instructor
 public class InstructorController implements Initializable {
     @FXML    private Label lblStatus;
     @FXML    private Label lblQuesNum;
@@ -96,6 +97,7 @@ public class InstructorController implements Initializable {
     User user2 = new User();
     User User = new User();
     
+    //Function Called When Class Initialized
     @Override
     public void initialize(URL location,ResourceBundle resources){
         cboEdit.getItems().clear();

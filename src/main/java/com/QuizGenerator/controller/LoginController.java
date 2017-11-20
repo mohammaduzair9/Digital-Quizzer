@@ -18,10 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author UZAIR
- */
+//Controller Class for Login
 public class LoginController  {
     
     @FXML    private Label lblStatus;
@@ -70,9 +67,11 @@ public class LoginController  {
     
     User User = new User();
     
+    //Function Called When Login Clicked
     public void Login(ActionEvent event) throws Exception{
         String username=txtUser.getText();
         String userpass=txtPass.getText();
+        
         User=tryLogin(username,userpass);
         
         if(User==user1 || User==user2){

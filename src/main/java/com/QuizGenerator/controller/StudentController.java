@@ -18,10 +18,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-/**
- *
- * @author UZAIR
- */
+//Controller Class For Student
 public class StudentController implements Initializable {
  
     @FXML    public ComboBox<String> cboSelectQuiz;
@@ -63,6 +60,7 @@ public class StudentController implements Initializable {
     Question currQues;
                     
     
+    //Called When Class initialized
     @Override
     public void initialize(URL location,ResourceBundle resources){
         Score=0;
@@ -77,6 +75,7 @@ public class StudentController implements Initializable {
 	}
     }
     
+    //Change Description of a Quiz
     public void changeQuizDesc(ActionEvent event) throws IOException{    
         String quizTitle = cboSelectQuiz.getSelectionModel().getSelectedItem();
         for (Quiz quiz : quizList) {

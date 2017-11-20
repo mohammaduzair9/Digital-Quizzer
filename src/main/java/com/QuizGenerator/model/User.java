@@ -1,22 +1,19 @@
 package com.QuizGenerator.model;
 
-/**
- *
- * @author UZAIR
- */
+//User Class
 public class User {
     private String userName;
     private String password;
     private String role;
     private int Score;
     
+    //constructors
     public User(){
         userName=null;
         password=null;
         role=null;
         Score=0;
     }
-    
     public User(String u, String p, String r, int s){
         userName=u;
         password=p;
@@ -24,6 +21,7 @@ public class User {
         Score=s;
     }
     
+    //setters
     public void setUserName(String str){
         userName=str;
     }
@@ -36,6 +34,8 @@ public class User {
     public void setScore(int num){
         Score=num;
     }
+    
+    //getters
     public String getUserName(){
         return userName;
     }

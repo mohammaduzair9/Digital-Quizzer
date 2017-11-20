@@ -1,23 +1,13 @@
 package com.QuizGenerator.controller;
 
 import com.QuizGenerator.model.Quiz;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.io.*;
+import java.util.*;
 
-/**
- *
- * @author UZAIR
- */
+//FileStream Class
 public class quizFileStream {
 
+    //Write File Function
     public void writeToFile(List<Quiz> list, String file,int newFile) {
         ObjectOutputStream outStream = null;
         try {
@@ -55,6 +45,7 @@ public class quizFileStream {
         }
     }
 
+    //Read From File Function
     public List<Quiz> readFromFile(String file) {
         List<Quiz> list = new ArrayList<>();
         ObjectInputStream inputStream = null;
