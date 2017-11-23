@@ -1,40 +1,55 @@
 package com.quizer.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 /**
  *
  * @author UZAIR
  */
-@Entity
-@Table(name="user")
 public class User {
     
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int id;
-    
-    @Column(name="name",nullable=true)
-    private String name;
-    
-    public int getId(){
-        return id;
-    }
+    private String username;
+    private String password;
+    private String type;
+    private int score;
     
     public void setId(int id){
         this.id = id;
     }
     
-    public String getName(){
-        return name;
+    public int getId(){
+        return id;
     }
     
-    public void setName(String name){
-        this.name = name;
+    public void setUserName(String username){
+        this.username = username;
+    }
+    
+    public String getUserName(){
+        return username;
+    }
+    
+    
+    public void setPassword(String password){
+        this.password = password;
+    }
+    
+    public String getPassword(){
+        return password;
+    }
+    
+    public void setType(String type){
+        this.type = type;
+    }
+    
+    public String getType(){
+        return type;
+    }
+    
+    public void setScore(int score){
+        this.score = score;
+    }
+    
+    public int getScore(){
+        return score;
     }
 }    
