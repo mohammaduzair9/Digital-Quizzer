@@ -15,8 +15,7 @@
     </properties>
 
     <organization>
-        <!-- Used as the 'Vendor' for JNLP generation -->
-        <name>Your Organisation</name>
+        <name>Quiz Generator</name>
     </organization>
 
     <build>
@@ -116,6 +115,11 @@
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.4.1</version>
         </dependency>
     </dependencies>
 </project>
