@@ -22,10 +22,10 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)   
 @DiscriminatorValue(value="numeric")         
-class Question implements Serializable {
+public class Question implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
     
     @Column(name = "question") 

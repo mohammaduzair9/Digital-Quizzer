@@ -1,6 +1,6 @@
 package com.quizer.dao;
 
-import com.quizer.model.User;
+import com.quizer.model.Quiz;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
  * @author UZAIR
  */
 @Repository
-public class UserDaoImpl implements UserDao {
+public class QuizDaoImpl implements QuizDao {
     
     @Autowired
     private SessionFactory sessionFactory;
@@ -23,26 +23,26 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> getUserList() {
-        Criteria criteria = getSession().createCriteria(User.class);
+    public List<Quiz> getQuizList() {
+        Criteria criteria = getSession().createCriteria(Quiz.class);
         
-        return (List<User>) criteria.list();
+        return (List<Quiz>) criteria.list();
     }
 
     @Override
-    public void saveOrUpdate(User user) {
-        getSession().saveOrUpdate(user);
+    public void saveOrUpdate(Quiz quiz) {
+        getSession().saveOrUpdate(quiz);
     }
 
     @Override
-    public void deleteUser(int id) {
-        User user = (User) getSession().get(User.class,id);
-        getSession().delete(user);
+    public void deleteQuiz(int id) {
+        Quiz quiz = (Quiz) getSession().get(Quiz.class,id);
+        getSession().delete(quiz);
     }
     
     @Override
-    public User findUserById(int id) {
-        return (User) getSession().get(User.class, id);
+    public Quiz findQuizById(int id) {
+        return (Quiz) getSession().get(Quiz.class, id);
     }
 
     

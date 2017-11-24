@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-    public List<User> getListUser();
+    public List<User> getUserList();
     
     public void saveOrUpdate(User user);
     

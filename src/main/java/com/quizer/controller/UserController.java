@@ -21,22 +21,21 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value="/user/" , method=RequestMethod.GET , headers="Accept=application/json")
-    public @ResponseBody List<User> getListUser(){
-        System.out.println("get users");
-        List<User> users = userService.getListUser();
+    @RequestMapping(value="/readusers/" , method=RequestMethod.GET , headers="Accept=application/json")
+    public @ResponseBody List<User> getUserList(){
+        List<User> users = userService.getUserList();
         
         return users;
     }
 
-    @RequestMapping(value="/add/" , method=RequestMethod.POST)
+    @RequestMapping(value="/createuser/" , method=RequestMethod.POST)
     public @ResponseBody User add(@RequestBody User user){
         userService.saveOrUpdate(user);
         
         return user;
     }
     
-    @RequestMapping(value="/update/{id}" , method=RequestMethod.PUT)
+    @RequestMapping(value="/updateuser/{id}" , method=RequestMethod.PUT)
     public @ResponseBody User update(@PathVariable("id") int id, @RequestBody User user ){
         user.setId(id);
         userService.saveOrUpdate(user);
@@ -44,7 +43,7 @@ public class UserController {
         return user;
     }
     
-    @RequestMapping(value="/delete/{id}" , method=RequestMethod.DELETE)
+    @RequestMapping(value="/deleteuser/{id}" , method=RequestMethod.DELETE)
     public @ResponseBody User delete(@PathVariable("id") int id){ 
         User user = userService.findUserById(id);
         userService.deleteUser(id);
