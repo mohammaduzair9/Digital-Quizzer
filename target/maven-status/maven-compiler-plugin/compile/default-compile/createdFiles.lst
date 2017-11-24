@@ -1,9 +1,0 @@
-com\quizer\model\User.class
-com\quizer\config\HibernateConfig.class
-com\quizer\config\WebInitializer.class
-com\quizer\dao\UserDao.class
-com\quizer\service\UserServiceImpl.class
-com\quizer\config\WebConfig.class
-com\quizer\dao\UserDaoImpl.class
-com\quizer\service\UserService.class
-com\quizer\controller\UserController.class
