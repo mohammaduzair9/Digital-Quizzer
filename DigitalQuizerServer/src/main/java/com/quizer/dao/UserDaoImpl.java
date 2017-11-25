@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -45,5 +46,13 @@ public class UserDaoImpl implements UserDao {
         return (User) getSession().get(User.class, id);
     }
 
+    @Override
+    public User findUser(User user) {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
+        criteria.add(Restrictions.like("username", user.getUserName()));
+        criteria.add(Restrictions.like("password", user.getPassword()));
+        return (User) criteria.uniqueResult();
+    }
+    
     
 }

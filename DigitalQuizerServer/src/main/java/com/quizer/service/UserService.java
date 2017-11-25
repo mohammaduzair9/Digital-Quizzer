@@ -14,4 +14,7 @@ public interface UserService {
     
     public User findUserById(int id);
     
+    public User findUser(User user);
+    
+    
 }

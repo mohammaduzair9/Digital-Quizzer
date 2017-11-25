@@ -13,4 +13,7 @@ public interface UserDao {
     
     public User findUserById(int id);
     
+    public User findUser(User user);
+    
+    
 }

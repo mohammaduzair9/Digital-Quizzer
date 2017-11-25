@@ -21,7 +21,7 @@ public class QuizController {
     @Autowired
     QuizService quizService;
 
-    @RequestMapping(value="/readquizes/" , method=RequestMethod.GET , headers="Accept=application/json")
+    @RequestMapping(value="/quizes/" , method=RequestMethod.GET , headers="Accept=application/json")
     public @ResponseBody List<Quiz> getQuizList(){
         List<Quiz> quizes = quizService.getQuizList();
         

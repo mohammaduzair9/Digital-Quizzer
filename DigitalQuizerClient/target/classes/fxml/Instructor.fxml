@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #6E7983;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.QuizGenerator.controller.InstructorController">
+<AnchorPane id="AnchorPane" fx:id="mainPane" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #6E7983;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizer.controller.InstructorController">
    <children>
       <Pane fx:id="editOrMakePane" prefHeight="608.0" prefWidth="607.0" style="-fx-background-color: #6E7983;">
          <children>

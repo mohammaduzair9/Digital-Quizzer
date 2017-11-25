@@ -21,6 +21,14 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @RequestMapping(value="/login/" , method=RequestMethod.POST , headers="Accept=application/json")
+    public @ResponseBody User verifyLogin(@RequestBody User user){ 
+        
+        User validuser = userService.findUser(user);
+        
+        return validuser;
+    }
+    
     @RequestMapping(value="/readusers/" , method=RequestMethod.GET , headers="Accept=application/json")
     public @ResponseBody List<User> getUserList(){
         List<User> users = userService.getUserList();

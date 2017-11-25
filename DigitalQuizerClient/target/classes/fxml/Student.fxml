@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #6E7983;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.QuizGenerator.controller.StudentController">
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #6E7983;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.quizer.controller.StudentController">
    <children>
       <Pane fx:id="stdSelectPane" layoutX="67.0" layoutY="98.0" prefHeight="383.0" prefWidth="466.0" style="-fx-background-color: #2d3740;">
          <children>
