@@ -1,10 +1,12 @@
 package com.quizer.dao;
 
 import com.quizer.model.Question;
+import com.quizer.model.User;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,10 +25,13 @@ public class QuestionDaoImpl implements QuestionDao {
     }
 
     @Override
-    public List<Question> getQuestionList() {
-        Criteria criteria = getSession().createCriteria(Question.class);
+    public List<Question> getQuestionList(int id) {
+        
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Question.class);
+        criteria.add(Restrictions.like("id", id));
         
         return (List<Question>) criteria.list();
+    
     }
 
     @Override

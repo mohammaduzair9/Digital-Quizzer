@@ -3,6 +3,7 @@ package com.quizer.model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  *
@@ -12,10 +13,10 @@ import javax.persistence.Entity;
 @DiscriminatorValue("truefalse") 
 public class TrueFalse extends Question {
 
-    @Column(name = "optionTrue") 
+    @Column(name = "OPT_TRUE") 
     private String optionTrue;
     
-    @Column(name = "optionFalse") 
+    @Column(name = "OPT_FALSE") 
     private String optionFalse;
     
     public void setOptionTrue(String optionTrue) {

@@ -21,9 +21,9 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
-    @RequestMapping(value="/readquestions/" , method=RequestMethod.GET , headers="Accept=application/json")
-    public @ResponseBody List<Question> getQuestionList(){
-        List<Question> questions = questionService.getQuestionList();
+    @RequestMapping(value="/questions/{id}" , method=RequestMethod.GET , headers="Accept=application/json")
+    public @ResponseBody List<Question> getQuestionList(@PathVariable("id") int id){
+        List<Question> questions = questionService.getQuestionList(id);
         
         return questions;
     }

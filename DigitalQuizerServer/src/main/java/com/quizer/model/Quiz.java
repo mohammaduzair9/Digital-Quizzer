@@ -17,21 +17,17 @@ import javax.persistence.Table;
  * @author UZAIR
  */
 @Entity
-@Table(name="quiz")
+@Table(name="QUIZES")
 public class Quiz implements Serializable {
     
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "QUIZ_ID")
     private int id;
-    
-    @Column(name = "title")
+    @Column(name = "TITLE")
     private String title;
-    
-    @Column(name = "description")
+    @Column(name = "DESCRIPTION")
     private String description;
-    
-    @JsonIgnore
-    @OneToMany @JoinColumn(name = "fk_quiz")
+    @OneToMany(mappedBy="quiz")
     private List<Question> questions;
    
     public void setId(int id){

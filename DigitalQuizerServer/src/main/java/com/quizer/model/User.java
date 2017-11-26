@@ -13,23 +13,19 @@ import javax.persistence.Table;
  * @author UZAIR
  */
 @Entity
-@Table(name="user")
+@Table(name="USERS")
 public class User implements Serializable {
     
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "USER_ID")
     private int id;
-    
-    @Column(name="username" , unique = true)
+    @Column(name="USERNAME" , unique = true)
     private String username;
-    
-    @Column(name="password")
+    @Column(name="PASSWORD")
     private String password;
-    
-    @Column(name="type")
+    @Column(name="TYPE")
     private String type;
-    
-    @Column(name="score")
+    @Column(name="SCORE")
     private int score;
     
     public void setId(int id){
@@ -72,4 +68,5 @@ public class User implements Serializable {
     public int getScore(){
         return score;
     }
+    
 }    

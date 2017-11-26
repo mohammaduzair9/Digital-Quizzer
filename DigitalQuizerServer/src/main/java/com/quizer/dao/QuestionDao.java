@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface QuestionDao {
 
-    public List<Question> getQuestionList();
+    public List<Question> getQuestionList(int id);
     
     public void saveOrUpdate(Question question);
     

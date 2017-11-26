@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,24 +20,29 @@ import javax.persistence.Table;
  * @author UZAIR
  */
 @Entity
-@Table(name="question")
+@Table(name="QUESTIONS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)   
+@DiscriminatorColumn(name="TYPE",discriminatorType=DiscriminatorType.STRING)   
 @DiscriminatorValue(value="numeric")         
 public class Question implements Serializable {
 
-    @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Id 
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "QUES_ID")
     private int id;
     
-    @Column(name = "quest") 
+    @Column(name = "QUESTION") 
     private String question;
     
-    @Column(name = "answer") 
+    @Column(name = "ANSWER") 
     private String answer;
     
-    @Column(name = "marks") 
+    @Column(name = "MARKS") 
     private int marks;
+    
+    @ManyToOne    
+    @JoinColumn(name = "QUIZ_ID") 
+    private Quiz quiz;
     
     public void setId(int id){
         this.id = id;
@@ -44,6 +51,7 @@ public class Question implements Serializable {
     public int getId(){
         return id;
     }
+
     
     public void setQuestion(String question) {
         this.question = question;
@@ -69,5 +77,12 @@ public class Question implements Serializable {
         return marks;
     }
     
+    public void setQuiz(Quiz quiz) {
+        this.quiz = quiz;
+    }
+   
+    public Quiz getQuiz() {
+        return quiz;
+    }
+    
 }
-
