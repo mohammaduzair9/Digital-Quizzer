@@ -1,6 +1,5 @@
 package com.quizer.service;
 
-import com.quizer.dao.*;
 import com.quizer.model.Question;
 import java.util.List;
 

@@ -1,6 +1,7 @@
 package com.quizer.dao;
 
 import com.quizer.model.Question;
+import com.quizer.model.Quiz;
 import com.quizer.model.User;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -27,10 +28,14 @@ public class QuestionDaoImpl implements QuestionDao {
     @Override
     public List<Question> getQuestionList(int id) {
         
-        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Question.class);
-        criteria.add(Restrictions.like("id", id));
+        Criteria cQuiz = sessionFactory.getCurrentSession().createCriteria(Quiz.class);
+        cQuiz.add(Restrictions.like("id", id));
+        Quiz quiz = (Quiz) cQuiz.uniqueResult();
         
-        return (List<Question>) criteria.list();
+        Criteria cQuest = sessionFactory.getCurrentSession().createCriteria(Question.class);
+        cQuest.add(Restrictions.like("quiz", quiz));
+        
+        return (List<Question>) cQuest.list();
     
     }
 

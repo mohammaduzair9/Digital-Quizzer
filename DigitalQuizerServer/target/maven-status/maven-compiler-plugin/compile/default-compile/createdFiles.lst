@@ -5,7 +5,6 @@ com\quizer\model\User.class
 com\quizer\config\WebInitializer.class
 com\quizer\dao\UserDao.class
 com\quizer\service\QuestionServiceImpl.class
-com\quizer\model\MCQ.class
 com\quizer\dao\QuestionDaoImpl.class
 com\quizer\service\UserService.class
 com\quizer\model\TrueFalse.class
@@ -14,6 +13,7 @@ com\quizer\model\Quiz.class
 com\quizer\dao\QuizDaoImpl.class
 com\quizer\config\HibernateConfig.class
 com\quizer\service\UserServiceImpl.class
+com\quizer\model\Mcq.class
 com\quizer\service\QuizServiceImpl.class
 com\quizer\dao\QuestionDao.class
 com\quizer\service\QuizService.class

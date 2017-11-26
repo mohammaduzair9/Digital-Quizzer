@@ -1,5 +1,6 @@
 package com.quizer.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
@@ -42,6 +43,7 @@ public class Question implements Serializable {
     
     @ManyToOne    
     @JoinColumn(name = "QUIZ_ID") 
+    @JsonIgnore
     private Quiz quiz;
     
     public void setId(int id){

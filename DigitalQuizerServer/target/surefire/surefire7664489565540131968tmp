@@ -1,0 +1,9 @@
+#surefire
+#Sun Nov 26 19:25:34 PKT 2017
+maven.ext.class.path=C\:\\Program Files\\NetBeans 8.2\\java\\maven-nblib\\netbeans-eventspy.jar
+user.dir=C\:\\Users\\UZAIR\\Desktop\\DigitalQuizer\\DigitalQuizerServer
+file.encoding=UTF-8
+localRepository=C\:\\Users\\UZAIR\\.m2\\repository
+netbeans.deploy=true
+netbeans.deploy.clientUrlPart=
+basedir=C\:\\Users\\UZAIR\\Desktop\\DigitalQuizer\\DigitalQuizerServer
