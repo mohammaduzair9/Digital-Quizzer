@@ -28,8 +28,8 @@ public class QuizServiceImpl implements QuizService{
     }
 
     @Override
-    public void saveOrUpdate(Quiz quiz) {
-        quizDao.saveOrUpdate(quiz);
+    public Quiz saveQuiz(Quiz quiz) {
+        return quizDao.saveQuiz(quiz);
     }
 
     @Override
@@ -40,6 +40,11 @@ public class QuizServiceImpl implements QuizService{
     @Override
     public Quiz findQuizById(int id) {
         return quizDao.findQuizById(id);
+    }
+
+    @Override
+    public Quiz saveOrUpdate(Quiz quiz) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     

@@ -30,8 +30,10 @@ public class QuizDaoImpl implements QuizDao {
     }
 
     @Override
-    public void saveOrUpdate(Quiz quiz) {
-        getSession().saveOrUpdate(quiz);
+    public Quiz saveQuiz(Quiz quiz) {
+        int id = (int) getSession().save(quiz);
+        quiz.setId(id);
+        return quiz;
     }
 
     @Override

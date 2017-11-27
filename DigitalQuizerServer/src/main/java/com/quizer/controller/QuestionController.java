@@ -1,6 +1,8 @@
 package com.quizer.controller;
 
+import com.quizer.model.Mcq;
 import com.quizer.model.Question;
+import com.quizer.model.TrueFalse;
 import com.quizer.service.QuestionService;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,12 +30,38 @@ public class QuestionController {
         
         return questions;
     }
-
-    @RequestMapping(value="/addquestion/" , method=RequestMethod.POST)
-    public @ResponseBody Question add(@RequestBody Question question){
-        questionService.saveOrUpdate(question);
+    
+    @RequestMapping(value="/addmcq/" , method=RequestMethod.POST)
+    public @ResponseBody Mcq add(@RequestBody Mcq question){
+        questionService.saveMcq(question);
         
         return question;
+    }
+    
+    @RequestMapping(value="/addtruefalse/" , method=RequestMethod.POST)
+    public @ResponseBody TrueFalse add(@RequestBody TrueFalse question){
+        questionService.saveTrueFalse(question);
+        
+        return question;
+    }
+    
+    @RequestMapping(value="/addnumeric/" , method=RequestMethod.POST)
+    public @ResponseBody Question add(@RequestBody Question question){
+        questionService.saveNumeric(question);
+        
+        return question;
+    }
+
+    @RequestMapping(value="/addquestions/" , method=RequestMethod.POST)
+    public @ResponseBody List<Question> add(@RequestBody List<Question> quesList){
+        System.out.println(quesList.get(0).getQuestion());
+        System.out.println(quesList.get(0).getAnswer());
+        System.out.println(quesList.get(0).getMarks());
+        System.out.println(quesList.get(0).getQuiz());
+        System.out.println(quesList.get(0).getId());
+        questionService.saveList(quesList);
+        
+        return quesList;
     }
     
     @RequestMapping(value="/updatequestion/{id}" , method=RequestMethod.PUT)

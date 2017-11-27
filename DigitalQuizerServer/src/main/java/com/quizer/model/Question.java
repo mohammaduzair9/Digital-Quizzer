@@ -2,6 +2,7 @@ package com.quizer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -42,8 +43,8 @@ public class Question implements Serializable {
     private int marks;
     
     @ManyToOne    
-    @JoinColumn(name = "QUIZ_ID") 
     @JsonIgnore
+    @JoinColumn(name = "QUIZ_ID") 
     private Quiz quiz;
     
     public void setId(int id){
@@ -88,3 +89,4 @@ public class Question implements Serializable {
     }
     
 }
+
