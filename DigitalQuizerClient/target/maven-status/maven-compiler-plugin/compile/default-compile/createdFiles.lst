@@ -1,0 +1,6 @@
+com\quizer\main\MainApp.class
+com\quizer\model\User.class
+com\quizer\controller\LoginController.class
+com\quizer\controller\InstructorController.class
+com\quizer\controller\StudentController.class
+com\quizer\Bo\UserBo.class

@@ -1,0 +1,16 @@
+package com.quizer.service;
+
+import com.quizer.model.Question;
+import java.util.List;
+
+public interface QuestionService {
+
+    public List<Question> getQuestionList(int id);
+    
+    public void saveOrUpdate(Question question);
+    
+    public void deleteQuestion(int id);
+    
+    public Question findQuestionById(int id);
+    
+}
