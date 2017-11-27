@@ -2,8 +2,10 @@ package com.quizer.controller;
 
 import com.quizer.Bo.QuestionBo;
 import com.quizer.Bo.QuizBo;
+import com.quizer.model.Mcq;
 import com.quizer.model.Question;
 import com.quizer.model.Quiz;
+import com.quizer.model.TrueFalse;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -51,8 +53,12 @@ public class StudentController implements Initializable {
         
     QuizBo quizbo = new QuizBo();
     QuestionBo questionbo = new QuestionBo();
-    List<Quiz> quizes = new ArrayList<>();
+    
     List<Question> questions = new ArrayList<>();
+    Question quest = null;
+    
+    int userScore = 0;
+    int maxScore = 0;
     
     //Called When Class initialized
     @Override
@@ -60,12 +66,9 @@ public class StudentController implements Initializable {
         
         cboSelectQuiz.getItems().clear();
     
-        //request server to return all quizes
-        quizes = quizbo.getQuizes();
-        
-        //populating the quiz combobox
+        //request server to return all quizes and populating the quiz combobox
         ObservableList<Quiz> quizOptions = FXCollections.observableArrayList();
-        quizes.forEach((Quiz quiz) -> {
+        quizbo.getQuizes().forEach((Quiz quiz) -> {
             quizOptions.add(quiz);
         });
         
@@ -92,7 +95,6 @@ public class StudentController implements Initializable {
     }
     
     public void changeQuizDesc(ActionEvent event) throws IOException{    
-        
     }
     
     public void attemptNewQuiz(ActionEvent event) throws IOException{    
@@ -113,48 +115,116 @@ public class StudentController implements Initializable {
         //request server to return questions by giving in quiz ID
         questions = questionbo.getQuestions(quizID); 
         
-        questions.forEach((Question question) -> {
-            System.out.println(question);
-        });
-        
-        
-        
-        stdSelectPane.setVisible(false);
-        stdQuesPane.setVisible(true);
+        if(questions!=null){
             
-        btnNext.setText("Next");
-        
+            stdSelectPane.setVisible(false);
+            stdQuesPane.setVisible(true);
+            
+            ActionEvent evnt = new ActionEvent();
+            gotoNextQues(evnt);
+            
+        }
+        else{
+            lblQuizDesc.setText("NO QUESTIONS IN THIS QUIZ");
+        }
+       
     }
     
     public void gotoNextQues(ActionEvent event) throws IOException{    
+       
+        //getting the question number
+        int quesNum = 1;
+        if(quest != null)
+            quesNum = questions.indexOf(quest) + 2;
         
-        //function to go to next question
+        //marking the question
+        if(quesNum>1)
+            markQuestion();
         
+        //if no more questions then end the quiz
+        if(quesNum == questions.size()+1)
+            endQuiz();
+        
+        else{
+            if(quesNum == questions.size())
+                btnNext.setText("Finish");
+            else
+                btnNext.setText("Next");
+        
+            quest = questions.get(quesNum-1);
+            lblQuesNum.setText("Question " + quesNum);
+            txtQues.setText(quest.getQuestion());
+            lblMarks.setText("Max Marks ( " + quest.getMarks() + " )" );
+            
+            
+            if(quest instanceof TrueFalse)
+                showTrueFalse(quest);
+            
+            else if (quest instanceof Mcq)
+                showMcq(quest);
+            
+            else 
+                showNumeric(quest);
+        
+        }
     }
     
-    public void dispScore(){
+    public void markQuestion(){
+       
+        String correctAnswer = quest.getAnswer();
+        String userAns;
+        
+        if(quest instanceof TrueFalse)
+            userAns = truefalseGrp.getSelectedToggle().getUserData().toString();
+        
+        else if(quest instanceof Mcq)
+            userAns = mcqGrp.getSelectedToggle().getUserData().toString();
+        
+        else 
+            userAns = txtAns.getText();
+        
+        maxScore += quest.getMarks();
+        if(userAns.equals(correctAnswer))
+            userScore += quest.getMarks();
+       
+    } 
+
+    private void showMcq(Question quest) {
+        stdMCQPane.setVisible(true);
+        stdTrueFalsePane.setVisible(false);
+        stdNumericPane.setVisible(false);
+            
+        radMCQa.setText(((Mcq)quest).getOptionA());
+        radMCQb.setText(((Mcq)quest).getOptionB());
+        radMCQc.setText(((Mcq)quest).getOptionC());
+        radMCQd.setText(((Mcq)quest).getOptionD());
+       
+    }
+
+    private void showTrueFalse(Question quest) {
+        stdMCQPane.setVisible(false);
+        stdTrueFalsePane.setVisible(true);
+        stdNumericPane.setVisible(false);
+            
+        radTrue.setText(((TrueFalse)quest).getOptionTrue());
+        radFalse.setText(((TrueFalse)quest).getOptionFalse());
+    
+    }
+
+    private void showNumeric(Question quest) {
+        stdMCQPane.setVisible(false);
+        stdTrueFalsePane.setVisible(false);
+        stdNumericPane.setVisible(true);
+    
+    }
+    
+    public void endQuiz(){
         stdQuesPane.setVisible(false);
         stdfinalPane.setVisible(true);
         
         //function to display score
-        lblfinalScr.setText("");
-        lblfinalMaxScr.setText("");
+        lblfinalScr.setText( "" + userScore);
+        lblfinalMaxScr.setText( "" + maxScore);
     }
-    
-    public void displayOptions(){
-        
-        //displaying options of question
-        
-    }
-    
-    public void dispNextQues(){
-        
-        btnNext.setText("Finish");
-        
-        lblQuesNum.setText("Question " );
-        txtQues.setText("");
-        lblMarks.setText("Max Marks ( " + 5 + " )" );
-        //displayOptions(ques);
- 
-    } 
+
 }

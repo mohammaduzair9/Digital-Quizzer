@@ -2,7 +2,6 @@ package com.quizer.dao;
 
 import com.quizer.model.Question;
 import com.quizer.model.Quiz;
-import com.quizer.model.User;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;

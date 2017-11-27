@@ -1,6 +1,13 @@
+com\quizer\Bo\QuestionBo.class
+com\quizer\Bo\QuizBo.class
 com\quizer\main\MainApp.class
 com\quizer\model\User.class
 com\quizer\controller\LoginController.class
+com\quizer\model\TrueFalse.class
+com\quizer\model\Quiz.class
+com\quizer\model\Question.class
+com\quizer\model\Mcq.class
 com\quizer\controller\InstructorController.class
 com\quizer\controller\StudentController.class
+com\quizer\controller\StudentController$1.class
 com\quizer\Bo\UserBo.class
