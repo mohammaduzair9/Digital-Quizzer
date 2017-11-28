@@ -1,8 +1,18 @@
 package com.quizer.controller;
 
+import com.quizer.Bo.QuestionBo;
+import com.quizer.Bo.QuizBo;
+import com.quizer.model.MCQ;
+import com.quizer.model.Question;
+import com.quizer.model.Quiz;
+import com.quizer.model.TrueFalse;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 //Controller Class for Instructor
 public class InstructorController implements Initializable {
@@ -63,7 +74,7 @@ public class InstructorController implements Initializable {
     @FXML    private Pane makeNumericPane;
     @FXML    private Pane stdSelectPane;
     @FXML    private Pane editOrMakePane;
-    @FXML    private ComboBox cboEdit;
+    @FXML    private ComboBox<Quiz> cboEdit;
     @FXML    private Button btnMakeNew;
     @FXML    private Button btnNext;
     @FXML    private Button btnEditQuiz;
@@ -72,13 +83,40 @@ public class InstructorController implements Initializable {
     @FXML    private Pane insTrueFalsePane;
     @FXML    private Pane editQuizPane;
     
+    QuizBo quizbo = new QuizBo();
+    Quiz quiz =  new Quiz();
+    
+    QuestionBo questionbo = new QuestionBo();
+    List<Question> questions = new ArrayList<>();
+    Question quest = null;
+    
     //Function Called When Class Initialized
     @Override
     public void initialize(URL location,ResourceBundle resources){
         cboEdit.getItems().clear();
+    
+        //request server to return all quizes and populating the quiz combobox
+        ObservableList<Quiz> quizOptions = FXCollections.observableArrayList();
+        quizbo.getQuizes().forEach((Quiz quiz) -> {
+            quizOptions.add(quiz);
+        });
         
-        //request server to return all quizes
-        //cboEdit.getItems().add();
+        
+        cboEdit.setItems(quizOptions);
+        cboEdit.setConverter(new StringConverter<Quiz>(){
+
+            @Override
+            public String toString(Quiz object) {
+                return object.getTitle();
+            }
+
+            @Override
+            public Quiz fromString(String string) {
+                return cboEdit.getItems().stream().filter(quiz -> 
+                    quiz.getTitle().equals(string)).findFirst().orElse(null);
+            }
+        });
+     
     }
     
     public void makeQuizPaneVis(ActionEvent event) throws IOException{    
@@ -96,40 +134,57 @@ public class InstructorController implements Initializable {
             lblErrorMake.setText("You must give a title and description for quiz");
         }
         else{
+            
+            quiz = quizbo.addQuiz(qTitle, qDesc);
+            
             subQuesPane.setVisible(true);
             makeQuizPane.setVisible(false);
         }
-      
-    }
+    
+    } 
     
     public void startEditingQuiz(ActionEvent event) throws IOException{    
             
-        int quizID = (int) cboEdit.getSelectionModel().getSelectedItem();
+        quiz =  cboEdit.getSelectionModel().getSelectedItem();
+        int quizID = (int) cboEdit.getSelectionModel().getSelectedItem().getId();
         
         //request server to return questions by giving in quiz ID
+        questions = questionbo.getQuestions(quizID); 
         
-        editOrMakePane.setVisible(false);
-        editQuizPane.setVisible(true);
+        if(questions!=null){
             
-        //call function to display question;
+            editOrMakePane.setVisible(false);
+            editQuizPane.setVisible(true);
+            
+            ActionEvent evnt = new ActionEvent();
+            gotoNextQues(evnt);
+            
+        }
+        else{
+            System.out.println("NO QUESTIONS IN THIS QUIZ");
+        }
         
     }
     
     public void makeQuiz(ActionEvent event) throws IOException{    
         
         //POST Request to server to create quiz if questions exist
-        
-        //closing the current stage window 
-        Stage stage = (Stage) txtAns.getScene().getWindow();
-        stage.close();
+        if(questions != null){
             
-        //opening the main stage window
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Instructor.fxml"));
-        Scene scene = new Scene(root,600,600);
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
+            questionbo.saveQuestions();
+        
+            //closing the current stage window 
+            Stage stage = (Stage) txtAns.getScene().getWindow();
+            stage.close();
+            
+            //opening the main stage window
+            Parent root = FXMLLoader.load(getClass().getResource("Instructor.fxml"));
+            Scene scene = new Scene(root,600,600);
+            Stage primaryStage = new Stage();
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }
+        
     }
     
     public void makeMCQ(ActionEvent event) throws IOException{    
@@ -155,31 +210,46 @@ public class InstructorController implements Initializable {
     
     public void gotoNextQues(ActionEvent event) throws IOException{    
         
-        //if next question exists display question
-        //else return to main screen
+        //getting the question number
+        int quesNum = 1;
+        if(quest != null)
+            quesNum = questions.indexOf(quest) + 2;
         
-        editOrMakePane.setVisible(true);
-        editQuizPane.setVisible(false);
-        insMCQPane.setVisible(false);
-        insTrueFalsePane.setVisible(false);
-        insNumericPane.setVisible(false);
+        //if no more questions then end the quiz
+        if(quesNum == questions.size()+1)
+            endQuiz();
+        
+        //if next question exists display question
+        else{
+            if(quesNum == questions.size())
+                btnNext.setText("Finish");
+            else
+                btnNext.setText("Next");
+        
+            quest = questions.get(quesNum-1);
+            lblQuesNum.setText("Question " + quesNum);
+            txtQues1.setText(quest.getQuestion());
+            lblMarks.setText("Max Marks ( " + quest.getMarks() + " )" );
             
-        Stage stage = (Stage) txtAns.getScene().getWindow();
-        stage.close();
+            if(quest instanceof TrueFalse)
+                showTrueFalse(quest);
             
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Instructor.fxml"));
-        Scene scene = new Scene(root,600,600);
-        Stage primaryStage=new Stage();
-        primaryStage.setScene(scene);
-        primaryStage.show();
+            else if (quest instanceof MCQ)
+                showMcq(quest);
+            
+            else 
+                showNumeric(quest);
+        
+        }
             
     }
     
     public void subMCQ(ActionEvent event) throws IOException{    
         
         //retrieving input values
-        String qMarks = txtMarks.getText();
         String qQues = txtQuesMCQ.getText();
+        String qAns = "";
+        String qMarks = txtMarks.getText();
         String qMCQa = txtMCQa.getText();
         String qMCQb = txtMCQb.getText();
         String qMCQc = txtMCQc.getText();
@@ -195,6 +265,19 @@ public class InstructorController implements Initializable {
         else{
             
             //call function to save current MCQ 
+            if(radMCQa.isSelected())
+                qAns = txtMCQa.getText();
+            
+            else if(radMCQb.isSelected())
+                qAns = txtMCQb.getText();
+            
+            else if(radMCQc.isSelected())
+                qAns = txtMCQc.getText();
+            
+            else if(radMCQd.isSelected())
+                qAns = txtMCQd.getText();
+            
+            questionbo.addMCQ(qQues, qAns, Integer.parseInt(qMarks), quiz, qMCQa, qMCQb, qMCQc, qMCQd);
             
             txtQuesMCQ.setText("");
             txtMCQa.setText("");
@@ -216,7 +299,9 @@ public class InstructorController implements Initializable {
         //retrieving input values
         String qMarks = txtMarks.getText();
         String qQues = txtQuesTrueFalse.getText();
-        
+        String qAns = "";
+        String qTrue = "True";
+        String qFalse = "False";
         
         if(qQues.equals("") || qMarks.equals("")){
             
@@ -229,9 +314,24 @@ public class InstructorController implements Initializable {
         else{
             
             //call function to save current TrueFalse 
+            if(radTrue.isSelected())
+                qAns = qTrue;
+            
+            else if(radFalse.isSelected())
+                qAns = qFalse;
+            
+            else
+                lblErrorTrueFalse.setText("You must select a correct answer");
+            
+            
+            questionbo.addTrueFalse(qQues, qAns, Integer.parseInt(qMarks), quiz, qTrue, qFalse);
             
             txtQuesTrueFalse.setText("");
             txtMarks.setText("");
+            lblErrorDone.setText("");
+            lblErrorMCQ.setText("");
+            lblErrorNumeric.setText("");
+            lblErrorTrueFalse.setText("");
             
         }
     }
@@ -241,7 +341,6 @@ public class InstructorController implements Initializable {
         String qMarks = txtMarks.getText();
         String qQues = txtQuesNumeric.getText();
         String qAns = txtAnsNumeric.getText();
-        
         
         if(qQues.equals("") || qAns.equals("") || qMarks.equals("")){
             
@@ -254,10 +353,15 @@ public class InstructorController implements Initializable {
         else{
             
             //call function to save numeric question
+            questionbo.addNumeric(qQues, qAns, Integer.parseInt(qMarks), quiz);
             
             txtQuesNumeric.setText("");
             txtAnsNumeric.setText("");
             txtMarks.setText("");
+            lblErrorDone.setText("");
+            lblErrorMCQ.setText("");
+            lblErrorNumeric.setText("");
+            lblErrorTrueFalse.setText("");
             
         }
     }
@@ -268,5 +372,80 @@ public class InstructorController implements Initializable {
         
     }
     
-   
+    private void showMcq(Question quest) {
+        
+        insMCQPane.setVisible(true);
+        insTrueFalsePane.setVisible(false);
+        insNumericPane.setVisible(false);
+            
+        radMCQa1.setText(((MCQ)quest).getOptionA());
+        radMCQb1.setText(((MCQ)quest).getOptionB());
+        radMCQc1.setText(((MCQ)quest).getOptionC());
+        radMCQd1.setText(((MCQ)quest).getOptionD());
+        
+        String ans = quest.getAnswer();
+        
+        if(radMCQa1.getText().equals(ans))
+            radMCQa1.setSelected(true);
+            
+        else if(radMCQb1.getText().equals(ans))
+            radMCQb1.setSelected(true);
+            
+        else if(radMCQc1.getText().equals(ans))
+            radMCQc1.setSelected(true);
+            
+        else if(radMCQd1.getText().equals(ans))
+                radMCQd1.setSelected(true);
+           
+       
+    }
+
+    private void showTrueFalse(Question quest) {
+        
+        insMCQPane.setVisible(false);
+        insTrueFalsePane.setVisible(true);
+        insNumericPane.setVisible(false);
+            
+        radTrue1.setText(((TrueFalse)quest).getOptionTrue());
+        radFalse1.setText(((TrueFalse)quest).getOptionFalse());
+    
+        String ans = quest.getAnswer();
+        
+        if(radTrue1.getText().equals(ans))
+            radTrue1.setSelected(true);
+            
+        else if(radFalse1.getText().equals(ans))
+            radFalse1.setSelected(true);
+           
+    }
+
+    private void showNumeric(Question quest) {
+        
+        insMCQPane.setVisible(false);
+        insTrueFalsePane.setVisible(false);
+        insNumericPane.setVisible(true);
+    
+        String ans = quest.getAnswer();
+        
+        txtAns.setText(ans);
+    }
+    
+    public void endQuiz() throws IOException{
+        
+        editOrMakePane.setVisible(true);
+        editQuizPane.setVisible(false);
+        insMCQPane.setVisible(false);
+        insTrueFalsePane.setVisible(false);
+        insNumericPane.setVisible(false);
+            
+        Stage stage = (Stage) txtAns.getScene().getWindow();
+        stage.close();
+            
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Instructor.fxml"));
+        Scene scene = new Scene(root,600,600);
+        Stage primaryStage=new Stage();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    
+    }
 }

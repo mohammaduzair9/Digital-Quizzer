@@ -30,9 +30,9 @@ public class QuizController {
 
     @RequestMapping(value="/addquiz/" , method=RequestMethod.POST)
     public @ResponseBody Quiz add(@RequestBody Quiz quiz){
-        quizService.saveOrUpdate(quiz);
         
-        return quiz;
+        return quizService.saveQuiz(quiz);
+        
     }
     
     @RequestMapping(value="/updatequiz/{id}" , method=RequestMethod.PUT)

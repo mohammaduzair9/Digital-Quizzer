@@ -7,7 +7,9 @@ public interface QuizService {
 
     public List<Quiz> getQuizList();
     
-    public void saveOrUpdate(Quiz quiz);
+    public Quiz saveQuiz(Quiz quiz);
+    
+    public Quiz saveOrUpdate(Quiz quiz);
     
     public void deleteQuiz(int id);
     

@@ -28,7 +28,7 @@ public class Mcq extends Question {
         this.optionA=optionA;    
     }
     
-    public String getoptionA(){
+    public String getOptionA(){
         return optionA;
     }
  
@@ -36,7 +36,7 @@ public class Mcq extends Question {
         this.optionB=optionB;    
     }
     
-    public String getoptionB(){
+    public String getOptionB(){
         return optionB;
     }
     
@@ -44,14 +44,14 @@ public class Mcq extends Question {
         this.optionC=optionC;    
     }
     
-    public String getoptionC(){
+    public String getOptionC(){
         return optionC;
     }
     
     public void setOptionD(String optionD) {
         this.optionD=optionD;    
     }
-    public String getoptionD(){
+    public String getOptionD(){
         return optionD;
     }
 

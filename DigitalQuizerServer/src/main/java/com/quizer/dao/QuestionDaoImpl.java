@@ -1,8 +1,9 @@
 package com.quizer.dao;
 
+import com.quizer.model.Mcq;
 import com.quizer.model.Question;
 import com.quizer.model.Quiz;
-import com.quizer.model.User;
+import com.quizer.model.TrueFalse;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -35,13 +36,46 @@ public class QuestionDaoImpl implements QuestionDao {
         Criteria cQuest = sessionFactory.getCurrentSession().createCriteria(Question.class);
         cQuest.add(Restrictions.like("quiz", quiz));
         
+        List<Question> dcQuest = (List<Question>) cQuest.list();
+        
         return (List<Question>) cQuest.list();
     
     }
 
     @Override
+    public void saveList(List<Question> questions){
+        
+        questions.forEach((Question question) -> {
+            if(question instanceof TrueFalse)
+                getSession().save((TrueFalse)question);
+            
+            else if(question instanceof Mcq)
+                getSession().save((Mcq)question);
+            
+            else
+                getSession().save(question);
+        });
+       
+    }
+    
+    @Override
     public void saveOrUpdate(Question question) {
         getSession().saveOrUpdate(question);
+    }
+    
+    @Override
+    public void saveMcq(Mcq question) {
+        getSession().save(question);
+    }
+    
+    @Override
+    public void saveTrueFalse(TrueFalse question) {
+        getSession().save(question);
+    }
+    
+    @Override
+    public void saveNumeric(Question question) {
+        getSession().save(question);
     }
 
     @Override

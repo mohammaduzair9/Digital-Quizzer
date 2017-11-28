@@ -7,7 +7,7 @@ public interface QuizDao {
 
     public List<Quiz> getQuizList();
     
-    public void saveOrUpdate(Quiz quiz);
+    public Quiz saveQuiz(Quiz quiz);
     
     public void deleteQuiz(int id);
     

@@ -13,7 +13,7 @@ public class TrueFalse extends Question {
         this.optionTrue = optionTrue;
     }
     
-    public String getoptionTrue(){
+    public String getOptionTrue(){
         return optionTrue;
     }
 
@@ -21,7 +21,7 @@ public class TrueFalse extends Question {
         this.optionFalse = optionFalse;
     }
     
-    public String getoptFalse(){
+    public String getOptionFalse(){
         return optionFalse;
     }
     

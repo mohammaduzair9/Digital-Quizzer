@@ -2,7 +2,6 @@ package com.quizer.controller;
 
 import com.quizer.Bo.UserBo;
 import com.quizer.model.User;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,7 +74,7 @@ public class LoginController  {
                 stage.close();
         
                 Stage primaryStage=new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/Instructor.fxml"));
+                Parent root = FXMLLoader.load(getClass().getResource("Instructor.fxml"));
                 
                 Scene scene = new Scene(root,600,600);
                 primaryStage.setScene(scene);
@@ -87,8 +86,8 @@ public class LoginController  {
                 Stage stage = (Stage) lblStatus.getScene().getWindow();
                 stage.close();
         
-                Stage primaryStage=new Stage();
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/Student.fxml"));
+                Stage primaryStage = new Stage();
+                Parent root = FXMLLoader.load(getClass().getResource("Student.fxml"));
         
                 Scene scene = new Scene(root,600,600);
                 primaryStage.setScene(scene);

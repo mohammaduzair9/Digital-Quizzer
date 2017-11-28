@@ -1,7 +1,6 @@
 package com.quizer.Bo;
 
 import com.quizer.model.User;
-
 import org.springframework.web.client.RestTemplate;
  
 /**
@@ -13,7 +12,7 @@ public class UserBo {
     public static final String REST_SERVICE_URI = "http://localhost:8080/DigitalQuizerServer"; 
     RestTemplate restTemplate = new RestTemplate();
     
-    /* GET */
+    /* POST */
     public User getUser(String username, String password){
         
         User user = new User();

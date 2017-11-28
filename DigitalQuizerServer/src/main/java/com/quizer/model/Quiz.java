@@ -34,9 +34,10 @@ public class Quiz implements Serializable {
     @Column(name = "DESCRIPTION")
     private String description;
     
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
+ //   @LazyCollection(LazyCollectionOption.FALSE)
+ //   @OneToMany(mappedBy = "quiz", cascade = CascadeType.ALL)
     @JsonIgnore
+    @OneToMany(mappedBy="quiz")
     private List<Question> questions;
    
     public void setId(int id){
