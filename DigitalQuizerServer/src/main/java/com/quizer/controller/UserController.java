@@ -21,6 +21,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    //login user mapping
     @RequestMapping(value="/login/" , method=RequestMethod.POST , headers="Accept=application/json")
     public @ResponseBody User verifyLogin(@RequestBody User user){ 
         
@@ -29,6 +30,7 @@ public class UserController {
         return validuser;
     }
     
+    //user list mapping
     @RequestMapping(value="/readusers/" , method=RequestMethod.GET , headers="Accept=application/json")
     public @ResponseBody List<User> getUserList(){
         List<User> users = userService.getUserList();
@@ -36,6 +38,7 @@ public class UserController {
         return users;
     }
 
+    //user create mapping
     @RequestMapping(value="/createuser/" , method=RequestMethod.POST)
     public @ResponseBody User add(@RequestBody User user){
         userService.saveOrUpdate(user);
@@ -43,6 +46,7 @@ public class UserController {
         return user;
     }
     
+    //user update mapping
     @RequestMapping(value="/updateuser/{id}" , method=RequestMethod.PUT)
     public @ResponseBody User update(@PathVariable("id") int id, @RequestBody User user ){
         user.setId(id);
@@ -51,6 +55,7 @@ public class UserController {
         return user;
     }
     
+    //user delete mapping
     @RequestMapping(value="/deleteuser/{id}" , method=RequestMethod.DELETE)
     public @ResponseBody User delete(@PathVariable("id") int id){ 
         User user = userService.findUserById(id);
@@ -58,6 +63,5 @@ public class UserController {
         
         return user;
     }
-
-    
+   
 }

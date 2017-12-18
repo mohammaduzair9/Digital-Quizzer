@@ -9,6 +9,8 @@ import javax.persistence.Table;
  *
  * @author UZAIR
  */
+
+//TrueFalse Class
 @Entity
 @DiscriminatorValue("truefalse") 
 public class TrueFalse extends Question {

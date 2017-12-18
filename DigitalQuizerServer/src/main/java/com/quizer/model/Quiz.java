@@ -20,6 +20,8 @@ import org.hibernate.annotations.LazyCollectionOption;
  *
  * @author UZAIR
  */
+
+//Quiz Class
 @Entity
 @Table(name="QUIZES")
 public class Quiz implements Serializable {

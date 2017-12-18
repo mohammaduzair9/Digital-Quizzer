@@ -24,6 +24,7 @@ public class QuestionController {
     @Autowired
     QuestionService questionService;
 
+    //question list for a quiz mapping
     @RequestMapping(value="/questions/{id}" , method=RequestMethod.GET , headers="Accept=application/json")
     public @ResponseBody List<Question> getQuestionList(@PathVariable("id") int id){
         List<Question> questions = questionService.getQuestionList(id);
@@ -31,6 +32,7 @@ public class QuestionController {
         return questions;
     }
     
+    //add an mcq mapping
     @RequestMapping(value="/addmcq/" , method=RequestMethod.POST)
     public @ResponseBody Mcq add(@RequestBody Mcq question){
         questionService.saveMcq(question);
@@ -38,6 +40,7 @@ public class QuestionController {
         return question;
     }
     
+    //add truefalse mapping
     @RequestMapping(value="/addtruefalse/" , method=RequestMethod.POST)
     public @ResponseBody TrueFalse add(@RequestBody TrueFalse question){
         questionService.saveTrueFalse(question);
@@ -45,6 +48,7 @@ public class QuestionController {
         return question;
     }
     
+    //add numeric mapping
     @RequestMapping(value="/addnumeric/" , method=RequestMethod.POST)
     public @ResponseBody Question add(@RequestBody Question question){
         questionService.saveNumeric(question);
@@ -52,18 +56,15 @@ public class QuestionController {
         return question;
     }
 
+    //add questions mapping
     @RequestMapping(value="/addquestions/" , method=RequestMethod.POST)
     public @ResponseBody List<Question> add(@RequestBody List<Question> quesList){
-        System.out.println(quesList.get(0).getQuestion());
-        System.out.println(quesList.get(0).getAnswer());
-        System.out.println(quesList.get(0).getMarks());
-        System.out.println(quesList.get(0).getQuiz());
-        System.out.println(quesList.get(0).getId());
         questionService.saveList(quesList);
         
         return quesList;
     }
     
+    //update a question mapping
     @RequestMapping(value="/updatequestion/{id}" , method=RequestMethod.PUT)
     public @ResponseBody Question update(@PathVariable("id") int id, @RequestBody Question question ){
         question.setId(id);
@@ -72,6 +73,7 @@ public class QuestionController {
         return question;
     }
     
+    //delete question mapping
     @RequestMapping(value="/deletequestion/{id}" , method=RequestMethod.DELETE)
     public @ResponseBody Question delete(@PathVariable("id") int id){ 
         Question question = questionService.findQuestionById(id);

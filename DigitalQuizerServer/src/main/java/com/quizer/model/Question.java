@@ -21,6 +21,8 @@ import javax.persistence.Table;
  *
  * @author UZAIR
  */
+
+//Question Class
 @Entity
 @Table(name="QUESTIONS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -54,7 +56,6 @@ public class Question implements Serializable {
         return id;
     }
 
-    
     public void setQuestion(String question) {
         this.question = question;
     }

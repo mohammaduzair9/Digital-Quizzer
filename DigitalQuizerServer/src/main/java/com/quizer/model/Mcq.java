@@ -8,6 +8,8 @@ import javax.persistence.Entity;
  *
  * @author UZAIR
  */
+
+//MCQ class
 @Entity
 @DiscriminatorValue("mcq") 
 public class Mcq extends Question {
@@ -51,6 +53,7 @@ public class Mcq extends Question {
     public void setOptionD(String optionD) {
         this.optionD=optionD;    
     }
+    
     public String getOptionD(){
         return optionD;
     }

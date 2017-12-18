@@ -22,6 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({"com.quizer.config"})
 public class HibernateConfig {
  
+    //Returning Session factory bean 
     @Bean
     public LocalSessionFactoryBean sessionFactoryBean(){
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
@@ -32,6 +33,7 @@ public class HibernateConfig {
         return sessionFactoryBean;
     }
     
+    //setting database source
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource ds = new DriverManagerDataSource();
@@ -43,6 +45,7 @@ public class HibernateConfig {
         return ds;
     }
     
+    //setting hibernate properties
     private Properties hibernateProperties(){
         Properties properties = new Properties();
         properties.put("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
