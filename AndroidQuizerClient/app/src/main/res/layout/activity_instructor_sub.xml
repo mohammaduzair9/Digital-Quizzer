@@ -6,4 +6,409 @@
     android:layout_height="match_parent"
     tools:context="com.quizer.controller.InstructorSubActivity">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="75dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="40dp"
+        android:text="Marks"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.001" />
+
+    <EditText
+        android:id="@+id/etMarks"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="3"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <Button
+        android:id="@+id/btnFinalQuiz"
+        android:layout_width="134dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:onClick="makeQuiz"
+        android:text="Make Quiz"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/etMarks"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.063" />
+
+    <TabHost
+        android:id="@+id/tabHost"
+        android:layout_width="332dp"
+        android:layout_height="486dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.822">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TabWidget
+                android:id="@android:id/tabs"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:tabStripLeft="@android:drawable/bottom_bar" />
+
+            <FrameLayout
+                android:id="@android:id/tabcontent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/MCQ"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etQuesMCQ"
+                        android:layout_width="301dp"
+                        android:layout_height="82dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Question"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.533"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.034" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/clmcq"
+                        android:layout_width="297dp"
+                        android:layout_height="251dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="315dp"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etQuesMCQ"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <RadioGroup
+                            android:id="@+id/rdgrpMcq"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.063"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.112">
+
+                            <RadioButton
+                                android:id="@+id/radMcqA"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/radMcqB"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/radMcqC"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1" />
+
+                            <RadioButton
+                                android:id="@+id/radMcqD"
+                                android:layout_width="45dp"
+                                android:layout_height="45dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1" />
+                        </RadioGroup>
+
+                        <EditText
+                            android:id="@+id/etMcqA"
+                            android:layout_width="220dp"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.218"
+                            app:layout_constraintStart_toEndOf="@+id/radMcqA"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.0" />
+
+                        <EditText
+                            android:id="@+id/etMcqB"
+                            android:layout_width="220dp"
+                            android:layout_height="45dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="2dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.166"
+                            app:layout_constraintStart_toEndOf="@+id/radMcqB"
+                            app:layout_constraintTop_toBottomOf="@+id/etMcqA"
+                            app:layout_constraintVertical_bias="0.112" />
+
+                        <EditText
+                            android:id="@+id/etMcqC"
+                            android:layout_width="220dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="2dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.166"
+                            app:layout_constraintStart_toEndOf="@+id/radMcqC"
+                            app:layout_constraintTop_toBottomOf="@+id/etMcqB"
+                            app:layout_constraintVertical_bias="0.18" />
+
+                        <EditText
+                            android:id="@+id/etMcqD"
+                            android:layout_width="220dp"
+                            android:layout_height="45dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginStart="2dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.166"
+                            app:layout_constraintStart_toEndOf="@+id/radMcqD"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.959" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/btnSubMcq"
+                        android:layout_width="296dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginTop="8dp"
+                        android:onClick="makeMCQ"
+                        android:text="Submit"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/MCQ"
+                        app:layout_constraintVertical_bias="1.0" />
+                </android.support.constraint.ConstraintLayout>
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/TrueFalse"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etQuesTF"
+                        android:layout_width="301dp"
+                        android:layout_height="82dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Question"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.533"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.034" />
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="297dp"
+                        android:layout_height="170dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="315dp"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etQuesTF"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <RadioGroup
+                            android:id="@+id/rdgrpTF"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.063"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.112">
+
+                            <RadioButton
+                                android:id="@+id/radTrue"
+                                android:layout_width="200dp"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_weight="1"
+                                android:text="True" />
+
+                            <RadioButton
+                                android:id="@+id/radFalse"
+                                android:layout_width="200dp"
+                                android:layout_height="45dp"
+                                android:layout_marginBottom="15dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1"
+                                android:text="False" />
+
+                        </RadioGroup>
+
+                    </android.support.constraint.ConstraintLayout>
+
+                    <Button
+                        android:id="@+id/btnSubTF"
+                        android:layout_width="296dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:onClick="makeTrueFalse"
+                        android:text="Submit"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+                        app:layout_constraintVertical_bias="0.347" />
+
+
+                </android.support.constraint.ConstraintLayout>
+
+
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/Numeric"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/etQuesNum"
+                        android:layout_width="301dp"
+                        android:layout_height="82dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Question"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.533"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.109" />
+
+                    <EditText
+                        android:id="@+id/etAnsNum"
+                        android:layout_width="301dp"
+                        android:layout_height="82dp"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:hint="Answer"
+                        android:inputType="textMultiLine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.516"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etQuesNum"
+                        app:layout_constraintVertical_bias="0.161" />
+
+
+                    <Button
+                        android:id="@+id/btnSubNum"
+                        android:layout_width="296dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginTop="8dp"
+                        android:onClick="makeNumeric"
+                        android:text="Submit"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/etAnsNum"
+                        app:layout_constraintVertical_bias="0.338" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </FrameLayout>
+        </LinearLayout>
+    </TabHost>
+
 </android.support.constraint.ConstraintLayout>

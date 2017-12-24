@@ -12,6 +12,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.quizer.R;
+import com.quizer.bo.UserBo;
+import com.quizer.model.User;
+
+import org.springframework.web.client.RestTemplate;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
                 return user;
 
             } catch (Exception e) {
-                Log.e("MainActivity", e.getMessage(), e);
+                Log.e("LoginActivity", e.getMessage(), e);
             }
 
             return null;
@@ -46,11 +50,11 @@ public class LoginActivity extends AppCompatActivity {
                 tvError.setText("Login Successful");
 
                 if(user.getType().equals("instructor")){
-                    Intent intent = new Intent(LoginActivity.this,MakeQuizActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, InstructorMainActivity.class);
                     startActivity(intent);
                 }
                 else if(user.getType().equals("student")){
-                    Intent intent = new Intent(LoginActivity.this, SelectQuizActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, StudentMainActivity.class);
                     startActivity(intent);
                 }
             }
