@@ -39,8 +39,8 @@ public class HibernateConfig {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.jdbc.Driver");
         ds.setUrl("jdbc:mysql://localhost:3306/db_quizer");
-        ds.setUsername("uzair");
-        ds.setPassword("seecs");
+        ds.setUsername("root");
+        //ds.setPassword("seecs");
         
         return ds;
     }
