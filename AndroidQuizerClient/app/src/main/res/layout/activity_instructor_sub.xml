@@ -8,69 +8,78 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="75dp"
+        android:layout_width="118dp"
         android:layout_height="40dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
-        android:text="Marks"
-        android:textSize="25sp"
+        android:text="MARKS"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.379"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/etMarks"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
+        android:layout_width="63dp"
+        android:layout_height="51dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="3"
+        android:text="10"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintVertical_bias="0.054" />
 
     <Button
         android:id="@+id/btnFinalQuiz"
-        android:layout_width="134dp"
-        android:layout_height="45dp"
+        android:layout_width="394dp"
+        android:layout_height="49dp"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#00b764"
         android:onClick="makeQuiz"
         android:text="Make Quiz"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/etMarks"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabHost"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TabHost
         android:id="@+id/tabHost"
-        android:layout_width="332dp"
-        android:layout_height="486dp"
+        android:layout_width="363dp"
+        android:layout_height="492dp"
         android:layout_marginBottom="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.822">
+        app:layout_constraintVertical_bias="0.528">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,9 +88,19 @@
 
             <TabWidget
                 android:id="@android:id/tabs"
+                style="@android:style/Widget.Material.TabWidget"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:tabStripLeft="@android:drawable/bottom_bar" />
+                android:layout_height="65sp"
+                android:addStatesFromChildren="false"
+                android:alwaysDrawnWithCache="false"
+                android:background="#ffffff"
+                android:fadingEdge="vertical"
+                android:focusable="auto"
+                android:gravity="fill_vertical"
+                android:showDividers="beginning|middle"
+                android:splitMotionEvents="true"
+                android:tabStripLeft="@android:drawable/bottom_bar"
+                android:textAlignment="center" />
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
@@ -91,37 +110,37 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/MCQ"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#cecece">
 
                     <EditText
                         android:id="@+id/etQuesMCQ"
-                        android:layout_width="301dp"
-                        android:layout_height="82dp"
+                        android:layout_width="336dp"
+                        android:layout_height="80dp"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-                        android:hint="Question"
+                        android:hint="QUESTION"
                         android:inputType="textMultiLine"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.533"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.034" />
+                        app:layout_constraintVertical_bias="0.024" />
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/clmcq"
-                        android:layout_width="297dp"
+                        android:layout_width="335dp"
                         android:layout_height="251dp"
                         android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="315dp"
-                        android:layout_marginStart="17dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_marginStart="3dp"
                         android:layout_marginTop="8dp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintHorizontal_bias="0.536"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etQuesMCQ"
                         app:layout_constraintVertical_bias="0.0">
@@ -145,7 +164,8 @@
                                 android:layout_marginBottom="15dp"
                                 android:layout_marginStart="4dp"
                                 android:layout_marginTop="8dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:textColorLink="#00b764" />
 
                             <RadioButton
                                 android:id="@+id/radMcqB"
@@ -153,7 +173,8 @@
                                 android:layout_height="45dp"
                                 android:layout_marginBottom="15dp"
                                 android:layout_marginStart="4dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:textColorLink="#00b764" />
 
                             <RadioButton
                                 android:id="@+id/radMcqC"
@@ -161,19 +182,21 @@
                                 android:layout_height="45dp"
                                 android:layout_marginBottom="15dp"
                                 android:layout_marginStart="4dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:textColorLink="#00b764" />
 
                             <RadioButton
                                 android:id="@+id/radMcqD"
                                 android:layout_width="45dp"
                                 android:layout_height="45dp"
                                 android:layout_marginStart="4dp"
-                                android:layout_weight="1" />
+                                android:layout_weight="1"
+                                android:textColorLink="#00b764" />
                         </RadioGroup>
 
                         <EditText
                             android:id="@+id/etMcqA"
-                            android:layout_width="220dp"
+                            android:layout_width="240sp"
                             android:layout_height="45dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginStart="2dp"
@@ -182,14 +205,14 @@
                             android:inputType="textPersonName"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.218"
+                            app:layout_constraintHorizontal_bias="0.342"
                             app:layout_constraintStart_toEndOf="@+id/radMcqA"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintVertical_bias="0.0" />
+                            app:layout_constraintVertical_bias="0.04" />
 
                         <EditText
                             android:id="@+id/etMcqB"
-                            android:layout_width="220dp"
+                            android:layout_width="240sp"
                             android:layout_height="45dp"
                             android:layout_marginEnd="8dp"
                             android:layout_marginStart="2dp"
@@ -204,7 +227,7 @@
 
                         <EditText
                             android:id="@+id/etMcqC"
-                            android:layout_width="220dp"
+                            android:layout_width="240sp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="8dp"
                             android:layout_marginEnd="8dp"
@@ -220,7 +243,7 @@
 
                         <EditText
                             android:id="@+id/etMcqD"
-                            android:layout_width="220dp"
+                            android:layout_width="240sp"
                             android:layout_height="45dp"
                             android:layout_marginBottom="8dp"
                             android:layout_marginEnd="8dp"
@@ -237,12 +260,16 @@
 
                     <Button
                         android:id="@+id/btnSubMcq"
-                        android:layout_width="296dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="333dp"
+                        android:layout_height="59dp"
                         android:layout_marginBottom="16dp"
                         android:layout_marginTop="8dp"
+                        android:background="#ffffff"
                         android:onClick="makeMCQ"
                         android:text="Submit"
+                        android:textColor="#00b764"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintLeft_toLeftOf="parent"
@@ -256,25 +283,28 @@
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/TrueFalse"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#cecece">
 
                     <EditText
                         android:id="@+id/etQuesTF"
-                        android:layout_width="301dp"
-                        android:layout_height="82dp"
+                        android:layout_width="337dp"
+                        android:layout_height="93dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="16dp"
                         android:layout_marginStart="8dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-                        android:hint="Question"
+                        android:hint="QUESTION"
                         android:inputType="textMultiLine"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.533"
+                        app:layout_constraintHorizontal_bias="0.173"
+                        app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.034" />
+                        app:layout_constraintVertical_bias="0.024" />
 
                     <android.support.constraint.ConstraintLayout
                         android:id="@+id/constraintLayout"
@@ -311,7 +341,8 @@
                                 android:layout_marginStart="4dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_weight="1"
-                                android:text="True" />
+                                android:text="True"
+                                android:textSize="20sp" />
 
                             <RadioButton
                                 android:id="@+id/radFalse"
@@ -320,7 +351,8 @@
                                 android:layout_marginBottom="15dp"
                                 android:layout_marginStart="4dp"
                                 android:layout_weight="1"
-                                android:text="False" />
+                                android:text="False"
+                                android:textSize="20sp" />
 
                         </RadioGroup>
 
@@ -328,29 +360,33 @@
 
                     <Button
                         android:id="@+id/btnSubTF"
-                        android:layout_width="296dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="321dp"
+                        android:layout_height="53dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="8dp"
+                        android:background="#ffffff"
                         android:onClick="makeTrueFalse"
                         android:text="Submit"
+                        android:textColor="#00b764"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.492"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-                        app:layout_constraintVertical_bias="0.347" />
+                        app:layout_constraintVertical_bias="0.904" />
 
 
                 </android.support.constraint.ConstraintLayout>
 
 
-
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/Numeric"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:background="#cecece">
 
                     <EditText
                         android:id="@+id/etQuesNum"
@@ -359,7 +395,7 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-                        android:hint="Question"
+                        android:hint="QUESTION"
                         android:inputType="textMultiLine"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -377,7 +413,7 @@
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-                        android:hint="Answer"
+                        android:hint="ANSWER"
                         android:inputType="textMultiLine"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -391,19 +427,23 @@
 
                     <Button
                         android:id="@+id/btnSubNum"
-                        android:layout_width="296dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="310dp"
+                        android:layout_height="58dp"
                         android:layout_marginBottom="8dp"
                         android:layout_marginTop="8dp"
+                        android:background="#ffffff"
                         android:onClick="makeNumeric"
                         android:text="Submit"
+                        android:textColor="#00b764"
+                        android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.492"
                         app:layout_constraintLeft_toLeftOf="parent"
                         app:layout_constraintRight_toRightOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/etAnsNum"
-                        app:layout_constraintVertical_bias="0.338" />
+                        app:layout_constraintVertical_bias="0.652" />
 
                 </android.support.constraint.ConstraintLayout>
 

@@ -8,23 +8,23 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="216dp"
-        android:layout_height="50dp"
+        android:layout_width="247dp"
+        android:layout_height="62dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#00b764"
         android:onClick="validate"
         android:text="Login"
         android:textColor="#ffffff"
-        android:textSize="24sp"
+        android:textSize="30sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etPass"
-        app:layout_constraintVertical_bias="0.45" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <EditText
         android:id="@+id/etUser"
@@ -37,6 +37,7 @@
         android:hint="USERNAME"
         android:inputType="textPersonName"
         android:paddingLeft="10sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -57,6 +58,7 @@
         android:hint="PASSWORD"
         android:inputType="textPassword"
         android:paddingLeft="10sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

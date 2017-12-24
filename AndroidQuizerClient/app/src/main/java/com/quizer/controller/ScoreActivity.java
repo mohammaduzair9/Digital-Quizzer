@@ -1,7 +1,9 @@
 package com.quizer.controller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.quizer.R;
@@ -10,6 +12,14 @@ public class ScoreActivity extends AppCompatActivity {
 
     private TextView tvScore;
     private TextView tvTotal;
+
+    //called on attempt new quiz button click
+    public void attemptNew(View view){
+
+        Intent intent = new Intent(ScoreActivity.this, StudentMainActivity.class);
+        startActivity(intent);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

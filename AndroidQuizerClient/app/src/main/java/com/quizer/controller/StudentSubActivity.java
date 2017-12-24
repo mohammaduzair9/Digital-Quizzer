@@ -91,14 +91,14 @@ public class StudentSubActivity extends AppCompatActivity {
 
         else{
             if(quesNum == quesList.size())
-                btnNext.setText("Finish");
+                btnNext.setText("FINISH");
             else
-                btnNext.setText("Next");
+                btnNext.setText("NEXT");
 
             quest = quesList.get(quesNum-1);
-            tvQuesNum.setText("Question " + quesNum);
+            tvQuesNum.setText("QUESTION " + quesNum);
             tvQues.setText(quest.getQuestion());
-            tvMarks.setText("Max Marks ( " + quest.getMarks() + " )" );
+            tvMarks.setText("MARKS ( " + quest.getMarks() + " )" );
 
 
             if(quest instanceof TrueFalse)
