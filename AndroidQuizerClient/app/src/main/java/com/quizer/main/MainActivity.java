@@ -15,7 +15,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
+        Thread timer = new Thread(){
+            public void run(){
+                try{
+                    sleep(3000);
+                }
+                catch(InterruptedException e){
+                    e.printStackTrace();
+                }
+                finally{
+                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+        };
+
+        timer.start();
     }
 }
