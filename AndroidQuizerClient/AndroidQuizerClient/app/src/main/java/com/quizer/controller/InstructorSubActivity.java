@@ -51,6 +51,7 @@ public class InstructorSubActivity extends AppCompatActivity {
     Bundle bundle;
     Quiz quiz;
 
+    /* POSTING QUESTIONS LIST TO SAVE TO SERVER */
     private class HttpRequestMakeQuiz extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -72,7 +73,7 @@ public class InstructorSubActivity extends AppCompatActivity {
 
     }
 
-    //called on submit MCQ button click
+    /* ACTION CALLED ON "SUBMIT MCQ" BUTTON CLICK */
     public void makeMCQ(View view){
 
         String quest = etQuesMcq.getText().toString();
@@ -102,7 +103,7 @@ public class InstructorSubActivity extends AppCompatActivity {
 
     }
 
-    //called on submit TrueFalse button click
+    /* ACTION CALLED ON "SUBMIT TRUE FALSE" BUTTON CLICK */
     public void makeTrueFalse(View view){
 
         String quest = etQuesTF.getText().toString();
@@ -123,7 +124,7 @@ public class InstructorSubActivity extends AppCompatActivity {
         clearData();
     }
 
-    //called on submit Numeric button click
+    /* ACTION CALLED ON "SUBMIT NUMERIC" BUTTON CLICK */
     public void makeNumeric(View view){
 
         String quest = etQuesNum.getText().toString();
@@ -148,7 +149,7 @@ public class InstructorSubActivity extends AppCompatActivity {
         etAnsNum.setText("");
     }
 
-    //called on make quiz button click
+    /* ACTION CALLED ON "MAKE QUIZ" BUTTON CLICK */
     public void makeQuiz(View view){
 
         new HttpRequestMakeQuiz().execute();
@@ -202,6 +203,7 @@ public class InstructorSubActivity extends AppCompatActivity {
         btnSubTF = (Button) findViewById(R.id.btnSubTF);
         btnSubNum = (Button) findViewById(R.id.btnSubNum);
 
+        /* RETRIEVING QUIZ FROM INTENT */
         bundle = getIntent().getExtras();
         quiz = bundle.getParcelable("quiz");
 

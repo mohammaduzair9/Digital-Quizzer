@@ -25,27 +25,25 @@ public class QuestionBo {
     List<Question> quesList = new ArrayList<>();
     ObjectMapper mapper = new ObjectMapper();
 
-    /* GET */
+    /* GET QUESTIONS LIST BY QUID ID */
     public List<Question> getQuestions(int id) throws IOException {
 
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 
         ResponseEntity<List<Question>> res;
-        ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(REST_SERVICE_URI+"/questions/"+id, Object[].class);
+        ResponseEntity<Object[]> responseEntity = restTemplate.getForEntity(REST_SERVICE_URI + "/questions/" + id, Object[].class);
         Object[] objects = responseEntity.getBody();
 
         List<Question> questions = new ArrayList<>();
-        for(int i=0; i<objects.length; i++){
-            String questionInJson  = mapper.writeValueAsString(objects[i]);
-            if(questionInJson.contains("optionA") && questionInJson.contains("optionB") && questionInJson.contains("optionC") && questionInJson.contains("optionD")){
+        for (int i = 0; i < objects.length; i++) {
+            String questionInJson = mapper.writeValueAsString(objects[i]);
+            if (questionInJson.contains("optionA") && questionInJson.contains("optionB") && questionInJson.contains("optionC") && questionInJson.contains("optionD")) {
                 MCQ ques = mapper.readValue(questionInJson, MCQ.class);
                 questions.add(ques);
-            }
-            else if(questionInJson.contains("optionTrue") && questionInJson.contains("optionFalse")){
+            } else if (questionInJson.contains("optionTrue") && questionInJson.contains("optionFalse")) {
                 TrueFalse ques = mapper.readValue(questionInJson, TrueFalse.class);
                 questions.add(ques);
-            }
-            else{
+            } else {
                 Question ques = mapper.readValue(questionInJson, Question.class);
                 questions.add(ques);
             }
@@ -55,6 +53,7 @@ public class QuestionBo {
         return questions;
     }
 
+    /* SAVE NUMERIC QUESTION IN QUESTIONS LIST */
     public void addNumeric(String quest, String answer, int marks, Quiz quiz) {
 
         Question question = new Question();
@@ -66,6 +65,7 @@ public class QuestionBo {
         quesList.add(question);
     }
 
+    /* SAVE TRUEFALSE QUESTION IN QUESTIONS LIST */
     public void addTrueFalse(String quest, String answer, int marks, Quiz quiz, String optTrue, String optFalse) {
 
         TrueFalse question = new TrueFalse();
@@ -79,6 +79,7 @@ public class QuestionBo {
         quesList.add(question);
     }
 
+    /* SAVE MCQ QUESTION IN QUESTIONS LIST */
     public void addMCQ(String quest, String answer, int marks, Quiz quiz, String optA, String optB, String optC, String optD) {
 
         MCQ question = new MCQ();
@@ -92,8 +93,9 @@ public class QuestionBo {
         question.setOptionD(optD);
 
         quesList.add(question);
-        }
+    }
 
+    /* POST ALL QUESTIONS FROM QUESTION LIST TO SERVER */
     public void saveQuestions() {
 
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());

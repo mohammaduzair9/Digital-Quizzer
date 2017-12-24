@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /* SPLASH SCREEN TIMER */
         Thread timer = new Thread(){
             public void run(){
                 try{
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 finally{
+
+                    /* DISPLAY LOGIN SCREEN AFTER SPLASH SCREEN SHOWS FOR 3 SECONDS */
                     Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                     startActivity(intent);
                 }

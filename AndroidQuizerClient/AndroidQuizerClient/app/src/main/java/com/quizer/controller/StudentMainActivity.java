@@ -28,6 +28,7 @@ public class StudentMainActivity extends AppCompatActivity {
     QuizBo quizbo =new QuizBo();
     List<Quiz> quizList;
 
+    /* THREAD FOR REQUESTING QUIZ LIST FROM SERVER */
     private class HttpRequestQuiz extends AsyncTask<Void, Void, List<Quiz>> {
 
         @Override
@@ -47,6 +48,8 @@ public class StudentMainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<Quiz> quizes) {
             quizList = quizes;
+
+            /* DISPLAYING RETRIEVED QUIZES IN SPINNER */
             spQuiz = (Spinner) findViewById(R.id.spQuiz);
             List<String> list = new ArrayList<String>();
 
@@ -75,7 +78,7 @@ public class StudentMainActivity extends AppCompatActivity {
 
     }
 
-    //called on submit button click
+    /* ACTION CALLED ON "SUBMIT" BUTTON CLICK */
     public void startQuiz(View view){
 
         int quizPos = spQuiz.getSelectedItemPosition();

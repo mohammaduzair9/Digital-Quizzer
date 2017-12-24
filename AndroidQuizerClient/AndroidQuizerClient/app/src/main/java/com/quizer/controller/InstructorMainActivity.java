@@ -24,6 +24,7 @@ public class InstructorMainActivity extends AppCompatActivity {
     QuizBo quizbo =new QuizBo();
     RestTemplate restTemplate = new RestTemplate();
 
+    /* POSTING SAVE QUIZ REQUEST TO SERVER */
     private class HttpRequestMakeQuiz extends AsyncTask<Void, Void, Quiz> {
         @Override
         protected Quiz doInBackground(Void... params) {
@@ -49,7 +50,7 @@ public class InstructorMainActivity extends AppCompatActivity {
 
     }
 
-    //called on submit button click
+    /* ACTION CALLED ON "SUBMIT" BUTTON CLICK */
     public void makeQuiz(View view){
 
         if(!etTitle.getText().toString().equals("") && !etDescription.getText().toString().equals("")) {

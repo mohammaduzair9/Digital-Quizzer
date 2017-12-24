@@ -14,7 +14,7 @@ public class UserBo {
     public static final String REST_SERVICE_URI = "http://10.0.2.2:8080/DigitalQuizerServer";
     RestTemplate restTemplate = new RestTemplate();
 
-    /* POST */
+    /* POST USER OBJECT TO SERVER FOR LOGIN VALIDATION*/
     public User getUser(String username, String password){
 
         User user = new User();

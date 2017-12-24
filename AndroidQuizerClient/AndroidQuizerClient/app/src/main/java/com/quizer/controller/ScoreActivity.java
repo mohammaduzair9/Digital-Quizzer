@@ -13,7 +13,7 @@ public class ScoreActivity extends AppCompatActivity {
     private TextView tvScore;
     private TextView tvTotal;
 
-    //called on attempt new quiz button click
+    /* ACTION CALLED ON "ATTEMPT NEW QUIZ" BUTTON CLICK */
     public void attemptNew(View view){
 
         Intent intent = new Intent(ScoreActivity.this, StudentMainActivity.class);
@@ -29,6 +29,7 @@ public class ScoreActivity extends AppCompatActivity {
         tvScore = (TextView) findViewById(R.id.tvScore);
         tvTotal = (TextView) findViewById(R.id.tvTotal);
 
+        /* RETRIEVING SCORE AND MAX MARKS FROM INTENT */
         int userScore = getIntent().getIntExtra("score",0);
         int maxScore = getIntent().getIntExtra("total",0);
 

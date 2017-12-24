@@ -28,6 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     UserBo userbo =new UserBo();
     RestTemplate restTemplate = new RestTemplate();
 
+    /* THREAD FOR REQUESTING LOGIN VALIDATION FROM SERVER */
     private class HttpRequestLogin extends AsyncTask<Void, Void, User> {
         @Override
         protected User doInBackground(Void... params) {
@@ -66,7 +67,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //called on login button click
+    /* ACTION CALLED ON "LOGIN" BUTTON CLICK */
     public void validate(View view){
 
         new HttpRequestLogin().execute();

@@ -72,20 +72,20 @@ public class StudentSubActivity extends AppCompatActivity {
         }
     }
 
-    //called on next button click
+    /* ACTION CALLED ON "NEXT" BUTTON CLICK */
     public void nextQuestion(View view){
 
-        //getting the question number
+        /* GETTING THE QUESTION NUMBER */
         int quesNum = 1;
 
         if(quest != null)
             quesNum = quesList.indexOf(quest) + 2;
 
-        //marking the question
+        /* MARKING THE QUESTION */
         if(quesNum>1)
             markQuestion();
 
-        //if no more questions then end the quiz
+        /* END QUIZ IF NO MORE QUESTIONS LEFT */
         if(quesNum == quesList.size()+1)
             endQuiz();
 
@@ -113,6 +113,7 @@ public class StudentSubActivity extends AppCompatActivity {
         }
     }
 
+    /* MARKING QUESTION BY COMPARING THE CORRECT ANSWER */
     public void markQuestion(){
 
         String correctAnswer = quest.getAnswer();
@@ -144,6 +145,7 @@ public class StudentSubActivity extends AppCompatActivity {
 
     }
 
+    /* DISPLAYING MCQ ON SCREEN */
     private void showMcq(Question quest) {
 
         clMcq.setVisibility(View.VISIBLE);
@@ -156,6 +158,7 @@ public class StudentSubActivity extends AppCompatActivity {
         radAnsD.setText(((MCQ)quest).getOptionD());
     }
 
+    /* DISPLAYING TRUE FALSE ON SCREEN */
     private void showTrueFalse(Question quest) {
 
         clMcq.setVisibility(View.INVISIBLE);
@@ -167,6 +170,7 @@ public class StudentSubActivity extends AppCompatActivity {
 
     }
 
+    /* DISPLAYING NUMERIC ON SCREEN */
     private void showNumeric(Question quest) {
 
         clMcq.setVisibility(View.INVISIBLE);
@@ -174,6 +178,7 @@ public class StudentSubActivity extends AppCompatActivity {
         clNum.setVisibility(View.VISIBLE);
     }
 
+    /* END QUIZ FUNCTION CALLED IF NO MORE QUESTIONS TO SHOW */
     public void endQuiz(){
 
         Intent intent = new Intent(StudentSubActivity.this, ScoreActivity.class);
@@ -204,7 +209,7 @@ public class StudentSubActivity extends AppCompatActivity {
         etAns = (EditText) findViewById(R.id.etAns);
         btnNext = (Button) findViewById(R.id.btnNext);
 
-
+        /* RETRIEVING QUIZ ID FROM INTENT */
         int quizID = getIntent().getIntExtra("quizID",0);
 
         new HttpRequestQuestion().execute(quizID);

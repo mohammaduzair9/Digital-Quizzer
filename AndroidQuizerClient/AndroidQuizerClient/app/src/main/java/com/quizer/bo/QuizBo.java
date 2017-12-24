@@ -21,7 +21,7 @@ public class QuizBo {
     RestTemplate restTemplate = new RestTemplate();
     List<Quiz> quizes = new ArrayList<>();
 
-    /* GET */
+    /* GET LIST OF ALL QUIZES*/
     public List<Quiz> getQuizes(){
 
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
@@ -29,7 +29,7 @@ public class QuizBo {
         return Arrays.asList(quizes.getBody());
     }
 
-    /* POST */
+    /* POST A NEW QUIZ TO SERVER*/
     public Quiz addQuiz(String title, String description) {
         Quiz quiz = new Quiz();
         quiz.setTitle(title);
