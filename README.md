@@ -11,7 +11,12 @@ Students can view all quizzes and take a particular quiz. The student attempts t
 ## Server Side
 
 The server provides a rest api by using Spring framework.
+https://github.com/mohammaduzair9/DigitalQuizzer/blob/master/QuizerServer/README.md
 
 ## Client Side
 
-There are 2 client applications, one for Desktop (Java) and other for Mobile (Android).
+There are 2 client applications: 
+Desktop Application (Java)<br/>
+https://github.com/mohammaduzair9/DigitalQuizzer/blob/master/QuizerClient(Java)/README.md<br/>
+Mobile Application (Android)<br/>
+https://github.com/mohammaduzair9/DigitalQuizzer/blob/master/QuizerClient(Android)/README.md
